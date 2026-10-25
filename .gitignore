@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Build and Packaging outputs (Binary releases are published via GitHub Releases)
+build/
+dist/
+out/
+*.exe
+*.blockmap
+
+# Environment & Private data
+.env*
+*.log
+*.pem
+*.key
+*.cert
+settings.json
+
+# Operating System Files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# IDE & Editors
+.vscode/
+.idea/
+
+# Unrelated local directories and files (Safety protection)
+AEGRIXAI_KURULUM/
+Aegrix_Saldiri_Testi/
+LocalLeadCurator/
+custom.js
+duyuru.jpg
+user_library.php

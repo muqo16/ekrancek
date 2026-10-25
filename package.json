@@ -1,0 +1,38 @@
+{
+  "name": "screenshot-tool",
+  "version": "1.0.0",
+  "description": "Windows ekran goruntusu alma ve konumlandirma",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^41.0.3",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.example.screenshot",
+    "productName": "ScreenshotTool",
+    "directories": {
+      "output": "build"
+    },
+    "asarUnpack": [
+      "node_modules/**/*"
+    ],
+    "extraResources": [
+      "eng.traineddata",
+      "tur.traineddata"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "dependencies": {
+    "tesseract.js": "^7.0.0"
+  }
+}

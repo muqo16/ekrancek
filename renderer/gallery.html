@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ekran Görüntüsü Galerisi ve Düzenleyici</title>
+  <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- SOL KENAR: ÇEKİLENLER LİSTESİ / GALERİ (POPUP DRAWER) -->
+    <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">
+          <span class="icon">📸</span>
+          <h2>Çekilenler</h2>
+        </div>
+        <div class="sidebar-header-right">
+          <span id="imageCountBadge" class="badge">0</span>
+          <button id="btnCloseSidebar" class="close-sidebar-btn" title="Kapat (Sola Gizle / Esc)">◀ Kapat</button>
+        </div>
+      </div>
+
+      <div class="sidebar-actions">
+        <button id="btnOpenFolder" class="sidebar-btn" title="Klasörü Windows Gezgininde Aç">
+          📁 Kayıt Klasörü
+        </button>
+      </div>
+
+      <div id="thumbnailsList" class="thumbnails-list">
+        <!-- Dinamik küçük resimler buraya eklenecek -->
+      </div>
+    </aside>
+
+    <!-- DÜZENLEYİCİ VE GÖRÜNTÜ ALANI -->
+    <main class="main-content">
+      <!-- ÜST ARAÇ ÇUBUĞU (TOOLBAR) -->
+      <header class="toolbar">
+        <!-- Çekilenler Listesini Açan Popup Butonu -->
+        <button id="btnToggleSidebar" class="tool-btn gallery-toggle-btn" title="Çekilen Fotoğraflar Listesini Aç/Kapat (G)">
+          <span class="btn-icon">📸</span>
+          <span class="btn-text">Çekilenler</span>
+          <span id="toolbarImageBadge" class="badge">0</span>
+        </button>
+
+        <button id="btnFitScreen" class="tool-btn active" title="Görseli Ekrana Sığdır / %100 Orijinal Boyut">
+          <span class="btn-icon">🔍</span>
+          <span class="btn-text">Sığdır</span>
+        </button>
+
+        <div class="toolbar-divider"></div>
+
+        <!-- Araçlar -->
+        <div class="tool-group">
+          <button id="toolPointer" class="tool-btn active" title="İmleç / Seç">
+            <span class="btn-icon">👆</span>
+            <span class="btn-text">Seç</span>
+          </button>
+          <button id="toolArrow" class="tool-btn" title="Ok Çiz">
+            <span class="btn-icon">↗️</span>
+            <span class="btn-text">Ok</span>
+          </button>
+          <button id="toolRect" class="tool-btn" title="Kırmızı Kutu / Dikdörtgen">
+            <span class="btn-icon">🔲</span>
+            <span class="btn-text">Kutu</span>
+          </button>
+          <button id="toolPen" class="tool-btn" title="Serbest Kalem">
+            <span class="btn-icon">✏️</span>
+            <span class="btn-text">Kalem</span>
+          </button>
+          <button id="toolHighlight" class="tool-btn" title="Vurgulayıcı">
+            <span class="btn-icon">🖍️</span>
+            <span class="btn-text">Vurgula</span>
+          </button>
+          <button id="toolText" class="tool-btn" title="Resmin Üzerine Not / Yazı Ekle">
+            <span class="btn-icon">✍️</span>
+            <span class="btn-text">Yazı Ekle</span>
+          </button>
+          <button id="toolBlur" class="tool-btn" title="Bulanıklaştır / Sansür (Mozaik)">
+            <span class="btn-icon">⬛</span>
+            <span class="btn-text">Sansür</span>
+          </button>
+        </div>
+
+        <div class="toolbar-divider"></div>
+
+        <!-- Renk ve Kalınlık Seçimi -->
+        <div class="style-group">
+          <div class="color-palette">
+            <button class="color-dot active" data-color="#ef4444" style="background: #ef4444;" title="Kırmızı"></button>
+            <button class="color-dot" data-color="#eab308" style="background: #eab308;" title="Sarı"></button>
+            <button class="color-dot" data-color="#22c55e" style="background: #22c55e;" title="Yeşil"></button>
+            <button class="color-dot" data-color="#3b82f6" style="background: #3b82f6;" title="Mavi"></button>
+            <button class="color-dot" data-color="#ffffff" style="background: #ffffff;" title="Beyaz"></button>
+            <button class="color-dot" data-color="#0f172a" style="background: #0f172a; border: 1px solid #64748b;" title="Siyah"></button>
+          </div>
+          <select id="lineWidthSelect" class="size-select" title="Çizgi Kalınlığı">
+            <option value="2">Çizgi: 2px</option>
+            <option value="4" selected>Çizgi: 4px</option>
+            <option value="8">Çizgi: 8px</option>
+            <option value="14">Çizgi: 14px</option>
+          </select>
+          <select id="fontSizeSelect" class="size-select" title="Yazı Boyutu">
+            <option value="18">Yazı: 18px</option>
+            <option value="26">Yazı: 26px</option>
+            <option value="36" selected>Yazı: 36px (Büyük)</option>
+            <option value="48">Yazı: 48px (Çok Büyük)</option>
+            <option value="64">Yazı: 64px (Dev)</option>
+            <option value="84">Yazı: 84px (Mega)</option>
+          </select>
+        </div>
+
+        <div class="toolbar-divider"></div>
+
+        <!-- Eylemler (Undo, OCR, Kopyala, Kaydet, Sil) -->
+        <div class="action-group">
+          <button id="btnUndo" class="action-btn" title="Geri Al (Ctrl+Z)">
+            <span>↩️ Geri Al</span>
+          </button>
+          <button id="btnOCR" class="action-btn highlight-btn" title="Resimdeki Yazıları Oku (Kısayol: Ctrl+T veya Ctrl+O)">
+            <span>🔍 Metin Oku (Ctrl+T)</span>
+          </button>
+          <button id="btnCopy" class="action-btn success-btn" title="Panoya Kopyala (Ctrl+C)">
+            <span>📋 Panoya Kopyala</span>
+          </button>
+          <button id="btnSave" class="action-btn" title="Değişiklikleri Kaydet (Ctrl+S)">
+            <span>💾 Kaydet</span>
+          </button>
+          <button id="btnShowInFolder" class="action-btn icon-only" title="Dosyayı Klasörde Göster">
+            <span>📁</span>
+          </button>
+          <button id="btnDelete" class="action-btn danger-btn icon-only" title="Bu Resmi Sil">
+            <span>🗑️</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- ÇİZİM / GÖRÜNTÜ ALANI -->
+      <div id="canvasViewport" class="canvas-viewport">
+        <div id="canvasContainer" class="canvas-container">
+          <canvas id="mainCanvas"></canvas>
+        </div>
+        <div id="emptyState" class="empty-state" hidden>
+          <div class="empty-icon">🖼️</div>
+          <h3>Henüz ekran görüntüsü alınmadı</h3>
+          <p>Kısayol tuşlarını kullanarak ekran görüntüsü alabilirsiniz.</p>
+        </div>
+      </div>
+
+      <!-- ALT BİLGİ ÇUBUĞU -->
+      <footer class="statusbar">
+        <div class="status-left">
+          <span id="currentFileName">Dosya seçilmedi</span>
+          <span id="currentImageDim" class="dim-badge"></span>
+        </div>
+        <div class="status-right">
+          <span id="toastMessage" class="toast"></span>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- OCR MODAL -->
+  <div id="ocrModal" class="modal" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>🔍 Resimden Okunan Metin (OCR)</h3>
+        <button id="btnCloseOcr" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="ocrLoading" class="ocr-loading" hidden>
+          <div class="spinner"></div>
+          <p id="ocrProgressText">Metin taranıyor... (%0)</p>
+        </div>
+        <textarea id="ocrResultText" placeholder="Metin burada görüntülenecek..."></textarea>
+      </div>
+      <div class="modal-footer">
+        <button id="btnCopyOcrText" class="action-btn success-btn">
+          📋 Metni Kopyala
+        </button>
+        <button id="btnCloseOcrFooter" class="action-btn">Kapat</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="gallery.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kısayol ve Davranış Ayarları</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body class="shortcut-body">
+    <div class="shortcut-card">
+      <h1>Kısayol Ayarları</h1>
+      <p>`Ctrl`, `Shift`, `Alt`, `Win` tuşlarıyla kısayollarınızı belirleyin.</p>
+
+      <!-- 1. KESİT AL -->
+      <div class="shortcut-section">
+        <h2>Kesit Al (Seçim)</h2>
+        <div id="selectionShortcutValue" class="shortcut-value">Bekleniyor...</div>
+        <div class="shortcut-hint">Örnek: `Ctrl+Shift+S`, `Alt+F8`</div>
+        <div class="shortcut-grid">
+          <label class="shortcut-check"><input id="selectionModCtrl" type="checkbox"> Ctrl</label>
+          <label class="shortcut-check"><input id="selectionModShift" type="checkbox"> Shift</label>
+          <label class="shortcut-check"><input id="selectionModAlt" type="checkbox"> Alt</label>
+          <label class="shortcut-check"><input id="selectionModSuper" type="checkbox"> Win</label>
+        </div>
+        <label class="shortcut-select-wrap" for="selectionMainKey">
+          Ana tuş
+          <select id="selectionMainKey" class="shortcut-select"></select>
+        </label>
+      </div>
+
+      <!-- 2. TAM EKRAN AL -->
+      <div class="shortcut-section">
+        <h2>Tam Ekran Al</h2>
+        <div id="fullscreenShortcutValue" class="shortcut-value">Bekleniyor...</div>
+        <div class="shortcut-grid">
+          <label class="shortcut-check"><input id="fullscreenModCtrl" type="checkbox"> Ctrl</label>
+          <label class="shortcut-check"><input id="fullscreenModShift" type="checkbox"> Shift</label>
+          <label class="shortcut-check"><input id="fullscreenModAlt" type="checkbox"> Alt</label>
+          <label class="shortcut-check"><input id="fullscreenModSuper" type="checkbox"> Win</label>
+        </div>
+        <label class="shortcut-select-wrap" for="fullscreenMainKey">
+          Ana tuş
+          <select id="fullscreenMainKey" class="shortcut-select"></select>
+        </label>
+      </div>
+
+      <!-- 3. METİN OKU (OCR) -->
+      <div class="shortcut-section">
+        <h2>Metin Oku (OCR Kısayolu)</h2>
+        <div id="ocrShortcutValue" class="shortcut-value">Bekleniyor...</div>
+        <div class="shortcut-hint">Resimdeki veya ekrandaki metni doğrudan kopyalar.</div>
+        <div class="shortcut-grid">
+          <label class="shortcut-check"><input id="ocrModCtrl" type="checkbox"> Ctrl</label>
+          <label class="shortcut-check"><input id="ocrModShift" type="checkbox"> Shift</label>
+          <label class="shortcut-check"><input id="ocrModAlt" type="checkbox"> Alt</label>
+          <label class="shortcut-check"><input id="ocrModSuper" type="checkbox"> Win</label>
+        </div>
+        <label class="shortcut-select-wrap" for="ocrMainKey">
+          Ana tuş
+          <select id="ocrMainKey" class="shortcut-select"></select>
+        </label>
+      </div>
+
+      <!-- 4. DAVRANIŞ AYARLARI -->
+      <div class="shortcut-section">
+        <h2>Davranış Ayarları</h2>
+        <label class="shortcut-check" style="margin-top: 10px; cursor: pointer;">
+          <input id="autoOpenGalleryCheck" type="checkbox">
+          Çekimden sonra galeri penceresini aç
+        </label>
+        <div class="shortcut-hint" style="margin-top: 6px;">İşaretli değilse: Ekran görüntüsü sessizce kaydedilir, panoya kopyalanır ve önünüze hiçbir pencere açılmaz.</div>
+      </div>
+
+      <div id="shortcutStatus" class="shortcut-status"></div>
+      <div class="shortcut-actions">
+        <button id="saveButton">Kaydet</button>
+        <button id="resetButton" class="secondary">Varsayılan</button>
+        <button id="cancelButton" class="secondary">Vazgeç</button>
+      </div>
+    </div>
+    <script src="shortcut.js"></script>
+  </body>
+</html>
