@@ -8,7 +8,11 @@ let tray = null;
 let overlayWindow = null;
 let shortcutWindow = null;
 let galleryWindow = null;
-let saveDir = path.join(os.homedir(), "Pictures", "ScreenshotTool");
+const oldSaveDir = path.join(os.homedir(), "Pictures", "ScreenshotTool");
+let saveDir = path.join(os.homedir(), "Pictures", "OmniSnap Pro");
+if (fs.existsSync(oldSaveDir) && !fs.existsSync(saveDir)) {
+  saveDir = oldSaveDir;
+}
 const settingsPath = path.join(app.getPath("userData"), "settings.json");
 const logPath = path.join(app.getPath("userData"), "screenshot-tool.log");
 
@@ -82,7 +86,7 @@ function buildTrayMenu() {
 
 function createTray() {
   tray = new Tray(createTrayIcon());
-  tray.setToolTip("ScreenshotTool");
+  tray.setToolTip("OmniSnap Pro");
   tray.setContextMenu(buildTrayMenu());
   tray.on("double-click", () => openGalleryWindow());
   tray.on("click", () => tray.popUpContextMenu());
@@ -91,7 +95,7 @@ function createTray() {
 function showCaptureNotification(body) {
   if (!Notification.isSupported()) return;
   const notif = new Notification({
-    title: "ScreenshotTool",
+    title: "OmniSnap Pro",
     body,
     icon: path.join(__dirname, "assets", "tray_icon.png"),
     silent: true
@@ -105,7 +109,7 @@ function showStartupNotification() {
   }
 
   const notification = new Notification({
-    title: "ScreenshotTool hazır",
+    title: "OmniSnap Pro Hazır",
     body: "Uygulama sistem tepsisinde çalışıyor. Saat yanındaki gizli simgeler alanını da kontrol et.",
     icon: path.join(__dirname, "assets", "tray_icon.png"),
     silent: true
@@ -766,11 +770,11 @@ app.on("will-quit", () => {
 
 process.on("uncaughtException", (error) => {
   logError(`uncaughtException: ${error.message}`);
-  dialog.showErrorBox("ScreenshotTool hatasi", error.message);
+  dialog.showErrorBox("OmniSnap Pro Hatası", error.message);
 });
 
 process.on("unhandledRejection", (error) => {
   const message = error instanceof Error ? error.message : String(error);
   logError(`unhandledRejection: ${message}`);
-  dialog.showErrorBox("ScreenshotTool hatasi", message);
+  dialog.showErrorBox("OmniSnap Pro Hatası", message);
 });

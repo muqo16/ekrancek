@@ -1,11 +1,11 @@
-# 📸 EkranÇek (ScreenshotTool)
+# 📸 OmniSnap Pro
 
 <p align="center">
-  <img src="docs/images/app_overview.png" alt="EkranÇek Genel Bakış" width="100%" />
+  <img src="docs/images/app_overview.png" alt="OmniSnap Pro Genel Bakış" width="100%" />
 </p>
 
 <p align="center">
-  <a href="https://github.com/muqo16/ekrancek/releases/latest"><img src="https://img.shields.io/github/v/release/muqo16/ekrancek?color=blue&style=for-the-badge&logo=github" alt="Sürüm"></a>
+  <a href="https://github.com/muqo16/omnisnap-pro/releases/latest"><img src="https://img.shields.io/github/v/release/muqo16/omnisnap-pro?color=blue&style=for-the-badge&logo=github" alt="Sürüm"></a>
   <img src="https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?style=for-the-badge&logo=windows" alt="Platform">
   <img src="https://img.shields.io/badge/OCR-Tesseract%20(Offline%20TR%2FEN)-green?style=for-the-badge" alt="Offline OCR">
   <img src="https://img.shields.io/badge/Electron-41.0.3-47848F?style=for-the-badge&logo=electron" alt="Electron">
@@ -20,8 +20,8 @@ Windows işletim sisteminiz için hazır derlenmiş kurulum dosyasını veya kur
 
 | Paket Türü | Açıklama | İndirme Bağlantısı |
 | :--- | :--- | :--- |
-| 🚀 **Kurulumlu Sürüm (Setup.exe)** | Klasik Windows kurulum sihirbazı ile yükler, masaüstü kısayolu oluşturur. | [📥 ScreenshotTool Setup 1.0.0.exe](https://github.com/muqo16/ekrancek/releases/download/v1.0.0/ScreenshotTool.Setup.1.0.0.exe) |
-| 📦 **Taşınabilir Sürüm (Portable .zip)** | Kurulum gerektirmez. ZIP'ten çıkarıp doğrudan `ScreenshotTool.exe` ile çalıştırın. | [📥 ScreenshotTool-v1.0.0-Portable.zip](https://github.com/muqo16/ekrancek/releases/download/v1.0.0/ScreenshotTool-v1.0.0-Portable.zip) |
+| 🚀 **Kurulumlu Sürüm (Setup.exe)** | Klasik Windows kurulum sihirbazı ile yükler, masaüstü kısayolu oluşturur. | [📥 OmniSnap.Pro.Setup.1.0.0.exe](https://github.com/muqo16/omnisnap-pro/releases/download/v1.0.0/OmniSnap.Pro.Setup.1.0.0.exe) |
+| 📦 **Taşınabilir Sürüm (Portable .zip)** | Kurulum gerektirmez. ZIP'ten çıkarıp doğrudan `OmniSnap Pro.exe` ile çalıştırın. | [📥 OmniSnap-Pro-v1.0.0-Portable.zip](https://github.com/muqo16/omnisnap-pro/releases/download/v1.0.0/OmniSnap-Pro-v1.0.0-Portable.zip) |
 
 ---
 
@@ -66,7 +66,7 @@ Windows işletim sisteminiz için hazır derlenmiş kurulum dosyasını veya kur
 ## ⌨️ Kısayol Tuşları & Kullanım Rehberi
 
 <p align="center">
-  <img src="docs/images/shortcuts_guide.png" alt="EkranÇek Kısayol Rehberi" width="100%" />
+  <img src="docs/images/shortcuts_guide.png" alt="OmniSnap Pro Kısayol Rehberi" width="100%" />
 </p>
 
 ### Global Kısayollar (Her Yerden Çalışır)
@@ -81,12 +81,12 @@ Windows işletim sisteminiz için hazır derlenmiş kurulum dosyasını veya kur
 | :--- | :--- |
 | `G` veya `📸 Çekilenler` | Çekilen geçmiş fotoğraflar çekmecesini aç / kapat |
 | `Sağ Tık (Right Click)` | Tıklanan noktaya anında metin kutusu aç |
-| `Sol Tıkla Sürükle` | Yazılmış metni ekranda dilediğin yere taşı |
+| `Sol Tıkla Sürükle` | Yazılan metni ekranda dilediğin yere taşı |
 | `Delete` / `Backspace` | Seçili durumdaki metin kutusunu sil |
 | `Ctrl + C` | Görseli panoya kopyala (Doğrudan WhatsApp, Discord vb. yapıştırılabilir) |
 | `Ctrl + S` | Orijinali koruyarak yeni kopya olarak kaydet |
 | `Ctrl + Z` | Yapılan son çizimi / işlemi geri al |
-| `Esc` | Galeri çekmecesini kapat / Seçimi iptal et / OCR penceresini kapat |
+| `Esc` veya `◀ Kapat` | Galeri çekmecesini kapat / Seçimi iptal et / OCR penceresini kapat |
 
 ---
 
@@ -96,8 +96,8 @@ Eğer projeyi yerel ortamınızda kaynak koddan çalıştırmak veya kendiniz de
 
 ```bash
 # 1. Projeyi klonlayın
-git clone https://github.com/muqo16/ekrancek.git
-cd ekrancek
+git clone https://github.com/muqo16/omnisnap-pro.git
+cd omnisnap-pro
 
 # 2. Bağımlılıkları yükleyin
 npm install
@@ -110,7 +110,7 @@ npm run build
 ```
 
 Derlenen kurulum dosyaları `build/` dizini altında oluşturulur:
-- `build/ScreenshotTool Setup 1.0.0.exe` (Windows Kurulum Paketi)
+- `build/OmniSnap Pro Setup 1.0.0.exe` (Windows Kurulum Paketi)
 - `build/win-unpacked/` (Kuruluma gerek olmadan çalışan paket)
 
 ---
@@ -118,8 +118,8 @@ Derlenen kurulum dosyaları `build/` dizini altında oluşturulur:
 ## 🔒 Gizlilik ve Güvenlik Bildirimi
 
 - **Sıfır Telemetri:** Uygulama hiçbir analitik veri, kullanım istatistiği veya log toplamaz.
-- **Tamamen Yerel:** Alınan ekran görüntüleri yalnızca bilgisayarınızdaki `Resimler\ScreenshotTool` klasöründe saklanır.
-- **Çevrimdışı OCR:** Optik Karakter Tanıma (OCR) işlemi yerel Tesseract motoru ve bilgisayarınızdaki dil dosyaları ile tamamen internetsiz çalışır.
+- **Tamamen Yerel:** Alınan ekran görüntüleri yalnızca bilgisayarınızdaki `Resimler\OmniSnap Pro` (veya `ScreenshotTool`) klasöründe saklanır.
+- **Çevrimdışı OCR:** Optik Karakter Tanıma (OCR) işlemi yerel Tesseract motoru ve bilgisayarınızdaki dil modelleri ile tamamen internetsiz çalışır.
 
 ---
 

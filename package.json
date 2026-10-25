@@ -1,7 +1,7 @@
 {
-  "name": "screenshot-tool",
+  "name": "omnisnap-pro",
   "version": "1.0.0",
-  "description": "Windows ekran goruntusu alma ve konumlandirma",
+  "description": "OmniSnap Pro - Advanced Screen Capture, Real-time Annotation, Offline OCR Studio & Gallery for Windows",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -12,8 +12,8 @@
     "electron-builder": "^26.8.1"
   },
   "build": {
-    "appId": "com.example.screenshot",
-    "productName": "ScreenshotTool",
+    "appId": "com.muqo16.omnisnap",
+    "productName": "OmniSnap Pro",
     "directories": {
       "output": "build"
     },
